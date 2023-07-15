@@ -76,6 +76,8 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: 'black',
         width: '100%',
+        borderWidth:1,
+        borderColor:'royalblue',
         borderRadius: 4,
         fontFamily: Font.u3,
         paddingHorizontal: 12

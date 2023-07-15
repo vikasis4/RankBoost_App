@@ -76,7 +76,9 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 4,
     fontFamily: Font.u3,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    borderWidth:1,
+    borderColor:'royalblue'
   },
   text: {
     textAlign: 'center',

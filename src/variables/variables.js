@@ -3,12 +3,10 @@ export const LightColors = {
     c2: '#AAC4FF',
     c3: '#D2DAFF',
     c4: '#EEF1FF',
-}
-export const DarkColors = {
-    c1: '#213ABF',
-    c2: '#2B4EFF',
-    c3: '#0B1340',
-    c4: '#2746E6',
+    c5: '#213ABF',
+    c6: '#2B4EFF',
+    c7: '#0B1340',
+    c8: '#2746E6',
 }
 
 export const Font = {

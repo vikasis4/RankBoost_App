@@ -36,7 +36,7 @@ const Otp = (props) => {
             <Text style={styles.text}>Enter OTP</Text>
             <View style={{ width: '80%', gap: 20 }}>
                 <TextInput type="number" keyboardType="numeric" placeholder="Enter the OTP Recivied" style={styles.input} />
-                <Text onPress={() => props.navigation.navigate('Home')} style={styles.btn}>Submit</Text>
+                <Text onPress={() => props.props.navigation.navigate('BottomTab')} style={styles.btn}>Submit</Text>
             </View>
             <View style={{ width: '100%', gap: 8 }}>
                 <Text onPress={() => setAnimateValue(1000)} style={styles.bottomBtn}>Go Back</Text>
@@ -73,6 +73,8 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: 'black',
         width: '100%',
+        borderWidth:1,
+        borderColor:'royalblue',
         borderRadius: 4,
         fontFamily: Font.u3,
         paddingHorizontal: 12

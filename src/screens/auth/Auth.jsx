@@ -1,11 +1,10 @@
 import LinearGradient from 'react-native-linear-gradient';
-import { StyleSheet, View, ImageBackground, StatusBar } from 'react-native'
+import { StyleSheet, View, ImageBackground, Animated } from 'react-native'
 import { Global } from '../../context/Global'
 import React from 'react'
 import Login from './Login'
 import Register from './Register'
 import Otp from './Otp'
-import { DarkColors } from '../../variables/variables';
 
 const bg1 = require('../../../assets/images/bg1.jpg')
 
@@ -17,26 +16,27 @@ const Auth = (props) => {
 
 
 
+
     return (
+        <>
+            <View style={styles.cont}>
+                <ImageBackground source={bg1} style={styles.imgBackground}>
+                    <LinearGradient colors={['black', 'royalblue', 'teal', 'black']} style={styles.linearGradient}>
 
-        <View style={styles.cont}>
-            <StatusBar hidden={true} />
-            <ImageBackground source={bg1} style={styles.imgBackground}>
-                <LinearGradient colors={['teal', DarkColors.c3]} style={styles.linearGradient}>
-
-                    {
-                        state === 'login' ?
-                            <Login setState={setState} />
-                            :
-                            state === 'register' ?
-                                <Register setState={setState} />
+                        {
+                            state === 'login' ?
+                                <Login setState={setState} />
                                 :
-                                <Otp setState={setState} props={props} />
-                    }
+                                state === 'register' ?
+                                    <Register setState={setState} />
+                                    :
+                                    <Otp setState={setState} props={props} />
+                        }
 
-                </LinearGradient>
-            </ImageBackground>
-        </View >
+                    </LinearGradient>
+                </ImageBackground>
+            </View >
+        </>
     )
 }
 
