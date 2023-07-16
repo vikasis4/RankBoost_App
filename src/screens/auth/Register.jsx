@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     btn: {
         width: '100%',
-        backgroundColor: 'blue',
+        backgroundColor: 'royalblue',
         textAlign: 'center',
         color: 'white',
         fontFamily: Font.u2,

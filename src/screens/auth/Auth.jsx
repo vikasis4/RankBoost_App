@@ -1,5 +1,5 @@
 import LinearGradient from 'react-native-linear-gradient';
-import { StyleSheet, View, ImageBackground, Animated } from 'react-native'
+import { StyleSheet, View, ImageBackground } from 'react-native'
 import { Global } from '../../context/Global'
 import React from 'react'
 import Login from './Login'

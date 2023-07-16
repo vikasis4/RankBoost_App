@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Font } from '../variables/variables';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Home from '../screens/Home';
@@ -19,57 +19,60 @@ const Tab = createBottomTabNavigator();
 function MyTabBar({ state, descriptors, navigation }) {
 
     return (
-        <View style={{ flexDirection: 'row' }}>
-            {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-                const label =
-                    options.tabBarLabel !== undefined
-                        ? options.tabBarLabel
-                        : options.title !== undefined
-                            ? options.title
-                            : route.name;
+        <View style={{ justifyContent:'center', alignItems: 'center', position: 'absolute', bottom: 20, width: '100%' }}>
 
-                const isFocused = state.index === index;
+            <View style={{ flexDirection: 'row', width: '90%', borderRadius:8, overflow: 'hidden'}}>
+                {state.routes.map((route, index) => {
+                    const { options } = descriptors[route.key];
+                    const label =
+                        options.tabBarLabel !== undefined
+                            ? options.tabBarLabel
+                            : options.title !== undefined
+                                ? options.title
+                                : route.name;
 
-                const onPress = () => {
-                    const event = navigation.emit({
-                        type: 'tabPress',
-                        target: route.key,
-                        canPreventDefault: true,
-                    });
+                    const isFocused = state.index === index;
 
-                    if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate({ name: route.name, merge: true });
-                    }
-                };
-                return (
-                    <TouchableOpacity
-                        key={(Math.random() * 100).toString()}
-                        accessibilityRole="button"
-                        accessibilityState={isFocused ? { selected: true } : {}}
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
-                        testID={options.tabBarTestID}
-                        onPress={onPress}
-                        activeOpacity={1}
-                        style={{ flex: 1 }}
-                    >
-                        <LinearGradient colors={[ 'royalblue', 'purple' ]} style={{
-                            opacity: 0.7,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <View style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, gap: 4 }}>
+                    const onPress = () => {
+                        const event = navigation.emit({
+                            type: 'tabPress',
+                            target: route.key,
+                            canPreventDefault: true,
+                        });
 
-                                <Image source={label === 'Home' ? onHome : label === 'Refer' ? onRefer : label === 'Store' ? onStore : onPur} style={{ height: 24, width: 24, marginTop: 8 }} />
+                        if (!isFocused && !event.defaultPrevented) {
+                            navigation.navigate({ name: route.name, merge: true });
+                        }
+                    };
+                    return (
+                        <TouchableOpacity
+                            key={(Math.random() * 100).toString()}
+                            accessibilityRole="button"
+                            accessibilityState={isFocused ? { selected: true } : {}}
+                            accessibilityLabel={options.tabBarAccessibilityLabel}
+                            testID={options.tabBarTestID}
+                            onPress={onPress}
+                            activeOpacity={1}
+                            style={{ flex: 1 }}
+                        >
+                            <LinearGradient colors={['royalblue', 'purple']} style={{
+                                opacity: 0.7,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+                                <View style={[{ justifyContent: 'center', alignItems: 'center', paddingVertical: 5, gap: 4, position: 'relative' }]}>
 
-                                <Text style={{ color: isFocused ? 'white' : 'black', fontFamily: Font.u2, textAlign: 'center' }}>
-                                    {label}
-                                </Text>
-                            </View>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                );
-            })}
+                                    <Image source={label === 'Home' ? onHome : label === 'Refer' ? onRefer : label === 'Store' ? onStore : onPur} style={{ height: 24, width: 24, marginTop: 8 }} />
+
+                                    <Text style={{ color: isFocused ? 'white' : 'black', fontFamily: Font.u2, textAlign: 'center' }}>
+                                        {label}
+                                    </Text>
+                                </View>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    );
+                })}
+            </View>
         </View>
     );
 }
